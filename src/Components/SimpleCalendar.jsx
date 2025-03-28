@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./Calendar.css"; // Importing the separate CSS file
+import "./Calendar.css"; 
 
 export default class Calendar extends Component {
   constructor(props) {
@@ -51,42 +51,48 @@ export default class Calendar extends Component {
     let datesArray = Array(firstDay === 0 ? 6 : firstDay - 1).fill(null).concat([...Array(daysInMonth).keys()].map(i => i + 1));
 
     return (
-      <div className="calendar-container">
-        <div className="calendar">
-          {/* Header */}
-          <div className="calendar-header">
-            <span className="calendar-year">{currentYear}</span>
-            <span className="calendar-month">{monthNames[currentMonth]}</span>
-            <div className="calendar-nav-buttons">
-              <button onClick={this.handlePrevMonth} className="calendar-nav-button">←</button>
-              <button onClick={this.handleNextMonth} className="calendar-nav-button">→</button>
-            </div>
-          </div>
+      <div>
+        
+        <div className="calendar-container">
 
-          {/* Week Days */}
-          <div className="calendar-days-row">
-            {["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"].map((day) => (
-              <div key={day} className="calendar-day">{day}</div>
-            ))}
-          </div>
+<div className="calendar" > 
+      {/* Header */}
+      <b><h2>CALENDER</h2></b>
+  <div className="calendar-header">
+   
+    <span className="calendar-year">{currentYear}</span>
+    <span className="calendar-month">{monthNames[currentMonth]}</span>
+    <div className="calendar-nav-buttons">
+      <button onClick={this.handlePrevMonth} className="calendar-nav-button">←</button>
+      <button onClick={this.handleNextMonth} className="calendar-nav-button">→</button>
+    </div>
+  </div>
 
-          {/* Dates */}
-          <div className="calendar-dates-grid">
-            {datesArray.map((date, index) => (
-              <div
-                key={index}
-                className={`calendar-date-cell 
-                  ${date === null ? "empty-cell" : ""}
-                  ${date === selectedDate ? "selected-date" : ""}
-                  ${date === todayDate && currentMonth === todayMonth && currentYear === todayYear ? "today" : ""}
-                `}
-                onClick={() => this.handleDateClick(date)}
-              >
-                {date}
-              </div>
-            ))}
-          </div>
-        </div>
+  {/* Week Days */}
+  <div className="calendar-days-row">
+    {["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"].map((day) => (
+      <div key={day} className="calendar-day">{day}</div>
+    ))}
+  </div>
+
+  {/* Dates */}
+  <div className="calendar-dates-grid">
+    {datesArray.map((date, index) => (
+      <div
+        key={index}
+        className={`calendar-date-cell 
+          ${date === null ? "empty-cell" : ""}
+          ${date === selectedDate ? "selected-date" : ""}
+          ${date === todayDate && currentMonth === todayMonth && currentYear === todayYear ? "today" : ""}
+        `}
+        onClick={() => this.handleDateClick(date)}
+      >
+        {date}
+      </div>
+    ))}
+  </div>
+</div>
+</div>
       </div>
     );
   }
