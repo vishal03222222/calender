@@ -6,6 +6,31 @@
     <title>Document</title>
 </head>
 <body>
+    <input type="text" id="name">
+    <button onclick="handleInput()">Submit</button>
+    <ul id="list"></ul>  <!-- Changed ID from "text" to "list" -->
     
 </body>
+<script>
+    const array = [];
+
+    function handleInput() {
+        const name = document.getElementById("name").value;
+
+        if (name.trim() !== "") { // Prevent adding empty values
+            array.push(name);
+            document.getElementById("name").value = ""; // Clear input after adding
+
+            // Update the UI
+            const list = document.getElementById("list");
+            list.innerHTML = ""; // Clear previous list to avoid duplication
+
+            array.forEach((item) => {
+                const li = document.createElement("li");
+                li.textContent = item;
+                list.appendChild(li);
+            });
+        }
+    }
+</script>
 </html>
